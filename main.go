@@ -26,7 +26,7 @@ func main() {
 
 	start := time.Now()
 	for i := 0; i < num; i++ {
-		go test()
+		go request()
 	}
 
 	wg.Wait()
@@ -34,7 +34,7 @@ func main() {
 	fmt.Println(time.Now().Sub(start))
 }
 
-func test() {
+func request() {
 	http.Get(os.Getenv("WEBSITE_URL"))
 	wg.Done()
 }
